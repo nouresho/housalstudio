@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createSupabaseServerClient } from '@/lib/supabase-server';
 
-// GET - Fetch all projects (public)
+// GET - Fetch all events (public)
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
@@ -9,9 +9,8 @@ export async function GET(request) {
   const supabase = await createSupabaseServerClient();
 
   if (id) {
-    // Get single project
     const { data, error } = await supabase
-      .from('projets')
+      .from('evenements')
       .select('*')
       .eq('id', id)
       .single();
@@ -23,11 +22,10 @@ export async function GET(request) {
     return NextResponse.json(data);
   }
 
-  // Get all projects
   const { data, error } = await supabase
-    .from('projets')
+    .from('evenements')
     .select('*')
-    .order('created_at', { ascending: false });
+    .order('date', { ascending: true });
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -36,23 +34,23 @@ export async function GET(request) {
   return NextResponse.json(data);
 }
 
-// POST - Create new project (public)
+// POST - Create new event (public)
 export async function POST(request) {
   const body = await request.json();
-  const { titre, description, categorie, image_url, lien, statut } = body;
+  const { titre, description, date, lieu, image_url, statut } = body;
 
-  if (!titre || !description) {
-    return NextResponse.json({ error: 'Titre et description requis' }, { status: 400 });
+  if (!titre || !date) {
+    return NextResponse.json({ error: 'Titre et date requis' }, { status: 400 });
   }
 
   const supabase = await createSupabaseServerClient();
 
-  const { data, error } = await supabase.from('projets').insert([{
+  const { data, error } = await supabase.from('evenements').insert([{
     titre,
-    description,
-    categorie: categorie || null,
+    description: description || null,
+    date,
+    lieu: lieu || null,
     image_url: image_url || null,
-    lien: lien || null,
     statut: statut || 'actif'
   }]).select().single();
 
@@ -63,10 +61,10 @@ export async function POST(request) {
   return NextResponse.json(data, { status: 201 });
 }
 
-// PUT - Update project (public)
+// PUT - Update event (public)
 export async function PUT(request) {
   const body = await request.json();
-  const { id, titre, description, categorie, image_url, lien, statut } = body;
+  const { id, titre, description, date, lieu, image_url, statut } = body;
 
   if (!id) {
     return NextResponse.json({ error: 'ID requis' }, { status: 400 });
@@ -75,13 +73,13 @@ export async function PUT(request) {
   const supabase = await createSupabaseServerClient();
 
   const { data, error } = await supabase
-    .from('projets')
+    .from('evenements')
     .update({
       titre,
       description,
-      categorie,
+      date,
+      lieu,
       image_url,
-      lien,
       statut
     })
     .eq('id', id)
@@ -95,7 +93,7 @@ export async function PUT(request) {
   return NextResponse.json(data);
 }
 
-// DELETE - Delete project (public)
+// DELETE - Delete event (public)
 export async function DELETE(request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
@@ -106,7 +104,7 @@ export async function DELETE(request) {
 
   const supabase = await createSupabaseServerClient();
 
-  const { error } = await supabase.from('projets').delete().eq('id', id);
+  const { error } = await supabase.from('evenements').delete().eq('id', id);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

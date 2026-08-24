@@ -171,7 +171,7 @@ export default async function HomePage() {
                 <div className="gallery-item add-tile">
                   <div className="add-tile-inner">
                     <span className="icon">+</span>
-                    <span>Ajoutez votre premier projet depuis /admin</span>
+                    <span>Aucun projet disponible pour le moment</span>
                   </div>
                 </div>
               )}

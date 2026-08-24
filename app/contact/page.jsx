@@ -29,27 +29,26 @@ export default function Contact() {
     setSuccess(false)
 
     try {
-      // ✅ Envoyer le message vers Supabase
-      const { error } = await supabase
-        .from('messages')
-        .insert([{
-          nom: formData.nom,
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.nom,
           email: formData.email,
-          telephone: formData.telephone,
-          sujet: formData.sujet || 'Demande de contact',
-          message: formData.message,
-          statut: 'non-lu',
-          lu: false
-        }])
+          phone: formData.telephone,
+          service: formData.sujet,
+          message: formData.message
+        })
+      })
 
-      if (error) {
-        console.error('Erreur Supabase:', error)
-        setError('Une erreur est survenue, réessayez ou appelez-nous directement.')
-        setLoading(false)
-        return
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Une erreur est survenue')
       }
 
-      // ✅ Succès
       setSuccess(true)
       setFormData({
         nom: '',
@@ -59,7 +58,6 @@ export default function Contact() {
         message: ''
       })
       
-      // ✅ Cacher le message de succès après 5 secondes
       setTimeout(() => setSuccess(false), 5000)
       
     } catch (err) {
