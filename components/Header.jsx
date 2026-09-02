@@ -51,23 +51,6 @@ export default function Header({ active = 'home', forceDark = false }) {
           </Link>
 
           <div className="signup-wrap" ref={signupRef}>
-            <button
-              type="button"
-              className="btn signup-btn"
-              onClick={() => setSignupOpen((v) => !v)}
-              aria-expanded={signupOpen}
-            >
-              Espace Client
-              <svg 
-                className={`signup-chevron ${signupOpen ? 'rot' : ''}`} 
-                viewBox="0 0 24 24" 
-                width="14" 
-                height="14" 
-                fill="none"
-              >
-                <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
             
             <div className={`signup-dropdown ${signupOpen ? 'open' : ''}`}>
               <Link href="/contact" className="signup-option" onClick={() => setSignupOpen(false)}>
@@ -80,8 +63,8 @@ export default function Header({ active = 'home', forceDark = false }) {
                   </svg>
                 </span>
                 <span>
-                  <strong>Espace Client</strong>
-                  <small>Suivez vos projets et demandes</small>
+                  
+                  
                 </span>
               </Link>
             </div>
