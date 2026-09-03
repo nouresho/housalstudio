@@ -1,5 +1,6 @@
 import './globals.css';
 import type { ReactNode } from 'react';
+import IntroReveal from '@/components/IntroReveal';
 
 export const metadata = {
   title: 'Housal Agency — Create. Mark. Impact.',
@@ -13,7 +14,10 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <IntroReveal />
+        {children}
+      </body>
     </html>
   );
 }

@@ -37,9 +37,7 @@ export default function Header({ active = 'home', forceDark = false }) {
           <Link href="/" className={`nav-link-wow ${active === 'home' ? 'active' : ''}`}>
             Accueil
           </Link>
-          <Link href="/services" className={`nav-link-wow ${active === 'services' ? 'active' : ''}`}>
-            Services
-          </Link>
+          
           <Link href="/portfolio" className={`nav-link-wow ${active === 'portfolio' ? 'active' : ''}`}>
             Portfolio
           </Link>
