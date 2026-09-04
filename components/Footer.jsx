@@ -21,7 +21,7 @@ export default function Footer() {
             </div>
             <div className="footer-col">
               <h4>Coordonnées</h4>
-              <a href="tel:+212606363312">+212 606 36 33 12</a>
+              <a href="tel:+212690468262">+212 690 468 262</a>
               <a href="mailto:contact.housalagency@gmail.com">contact.housalagency@gmail.com</a>
               <p>Agadir, Morocco</p>
             </div>
