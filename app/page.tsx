@@ -37,9 +37,7 @@ export default function HomePage() {
             HERO
         ========================== */}
         <div className="video-hero">
-          <video autoPlay muted loop playsInline poster="">
-            <source src="/UZZAL1.mp4" type="video/mp4" />
-          </video>
+         
 
           <div className="vh-overlay"></div>
 

@@ -32,7 +32,7 @@ const PROJETS_DEFAUT = [
     titre: 'QHIWA — Coffee Brand',
     categorie: 'STRATÉGIE & CONTENU',
     variant: 'housal-3',
-    image_url: '/images/qhiwa.png',
+    image_url: '/images/QHIWA.png',
     client: 'QHIWA',
     date_projet: '2026',
     statut: 'Projet personnel · Stratégie & Contenu',
