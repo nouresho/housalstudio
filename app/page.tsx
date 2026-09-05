@@ -36,59 +36,48 @@ export default function HomePage() {
         {/* =========================
             HERO
         ========================== */}
-        <div className="video-hero">
-         
+        <section className="hero-wow">
 
-          <div className="vh-overlay"></div>
-
-          <div className="vh-content">
-
-            <div className="vh-eyebrow">
-              Agence de branding & communication — Agadir
-            </div>
-
-            <h1 className="display vh-title vh-title-anim">
-              <span className="d1">H</span>
-              <span className="d2">O</span>
-              <span className="d3">U</span>
-              <span className="d4">S</span>
-              <span className="d5">A</span>
-              <span className="d6">L</span>
-            </h1>
-
-            <p className="vh-sub">
-              Housal Agency conçoit des identités visuelles fortes et des
-              stratégies de communication qui marquent les esprits. Du logo à
-              l&apos;événement, on construit votre marque avec précision.
-            </p>
-
-            <div className="vh-ctas">
-              <Link
-                href="/contact"
-                className="btn btn-lg outline"
-                style={{
-                  borderColor: 'var(--cream)',
-                  color: 'var(--cream)',
-                }}
-              >
-                Démarrer un projet
-              </Link>
-            </div>
-
+          <div className="hero-wow-bg">
+            <div className="hero-wow-top"></div>
+            <div className="hero-wow-bottom"></div>
           </div>
+
+          <h1 className="hero-wow-title" aria-label="HOUSAL">
+            <span className="hw-l hw-1">H</span>
+            <span className="hw-l hw-2">O</span>
+            <span className="hw-l hw-3">U</span>
+            <span className="hw-l hw-4">S</span>
+            <span className="hw-l hw-5">A</span>
+            <span className="hw-l hw-6">L</span>
+          </h1>
+
+          <p className="hero-wow-caption">
+            Housal Agency conçoit des identités visuelles fortes et des
+            stratégies de communication qui marquent les esprits.
+          </p>
+
+          <Link href="/contact" className="hero-wow-cta">
+            Démarrer un projet <span>→</span>
+          </Link>
 
           <div className="vh-scroll">
             <span>Scroll</span>
             <span className="line"></span>
           </div>
-        </div>
+
+        </section>
 
 
         {/* =========================
             RIBBON
         ========================== */}
         <div className="ribbon-wrap">
-          <svg viewBox="0 0 1200 90" preserveAspectRatio="none">
+          <svg
+            viewBox="0 0 1200 90"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
             <path
               d="M0,45 C150,90 250,0 400,45 C550,90 650,0 800,45 C950,90 1050,0 1200,45"
               fill="none"
@@ -109,7 +98,7 @@ export default function HomePage() {
         {/* =========================
             GALERIE
         ========================== */}
-        <div className="block-section block-cream reveal in">
+        <section className="block-section block-cream reveal in">
 
           <div className="wrap">
 
@@ -120,7 +109,7 @@ export default function HomePage() {
             <h2
               className="display"
               style={{
-                fontSize: 'clamp(28px,4vw,42px)',
+                fontSize: 'clamp(28px, 4vw, 42px)',
                 margin: '0 0 12px',
               }}
             >
@@ -140,13 +129,13 @@ export default function HomePage() {
 
 
             {/* =========================
-                2 PROJETS
+                PROJETS
             ========================== */}
             <div className="gallery-grid">
 
               {projets.map((p) => (
 
-                <div
+                <article
                   className="gallery-item visible"
                   key={p.id}
                 >
@@ -201,7 +190,7 @@ export default function HomePage() {
 
                   </div>
 
-                </div>
+                </article>
 
               ))}
 
@@ -209,7 +198,7 @@ export default function HomePage() {
 
 
             {/* =========================
-                BOUTON PORTFOLIO
+                PORTFOLIO
             ========================== */}
             <div className="portfolio-explore">
 
@@ -224,13 +213,13 @@ export default function HomePage() {
 
           </div>
 
-        </div>
+        </section>
 
 
         {/* =========================
             CTA
         ========================== */}
-        <div className="reveal in">
+        <section className="reveal in">
 
           <div className="wrap">
 
@@ -256,7 +245,7 @@ export default function HomePage() {
 
           </div>
 
-        </div>
+        </section>
 
       </main>
 
