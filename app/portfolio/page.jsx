@@ -10,7 +10,7 @@ const PROJETS_DEFAUT = [
     titre: 'RZ Concept',
     categorie: 'SITES WEB',
     variant: 'housal-2',
-    image_url: null,
+    image_url: '/images/rz-concept.webp',
     client: 'RZ Concept',
     lien: 'https://rz-concept-website.vercel.app/',
     statut: 'Site web',
@@ -21,7 +21,8 @@ const PROJETS_DEFAUT = [
     titre: 'Ecokhephra',
     categorie: 'SITES WEB',
     variant: 'housal-3',
-    image_url: null,
+    image_url: '/images/eco-kephyra.webp',
+    image_fit: 'contain',
     client: 'Ecokhephra',
     lien: 'https://www.tamraghtscooter.com/',
     statut: 'Site web',
@@ -32,7 +33,9 @@ const PROJETS_DEFAUT = [
     titre: 'Housal Studio',
     categorie: 'SITES WEB',
     variant: 'housal-1',
-    image_url: null,
+    image_url: '/images/housal-studio.webp',
+    image_fit: 'contain',
+    image_background: '#1904cb',
     client: 'Housal Studio',
     lien: 'https://housalstudio.vercel.app/',
     statut: 'Site web',
@@ -43,7 +46,9 @@ const PROJETS_DEFAUT = [
     titre: 'Dar Limon',
     categorie: 'BRANDING',
     variant: 'housal-4',
-    image_url: null,
+    image_url: '/images/dar-limon.webp',
+    image_fit: 'contain',
+    image_background: '#efe9df',
     client: 'Dar Limon',
     lien: 'https://www.instagram.com/p/DdE2UhUxSDW/',
     statut: 'Branding',
@@ -185,9 +190,11 @@ export default function Portfolio() {
             <div className="gallery-grid gallery-grid-lg">
               {filteredProjects.map((p) => (
                 <div className={`gallery-item gallery-item-${p.variant}`} key={p.id}>
-                  <div className="gi-photo">
+                  <div className="gi-photo" style={{ background: p.image_background }}>
                     {p.image_url ? (
-                      <img src={p.image_url} alt={p.titre} />
+                      <img src={p.image_url} alt={p.titre} loading="lazy"
+                        className={p.image_fit === 'contain' ? 'gi-image-contain' : undefined}
+                        style={{ objectFit: p.image_fit || 'cover' }} />
                     ) : (
                       <div className="ph-placeholder" style={{
                         borderRadius: 0, position: 'absolute', inset: 0,
