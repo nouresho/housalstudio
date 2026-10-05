@@ -6,6 +6,36 @@ import { useEffect, useState } from 'react';
 
 const PROJETS_DEFAUT = [
   {
+    id: 'rz-concept',
+    titre: 'RZ Concept',
+    categorie: 'SITES WEB',
+    variant: 'housal-2',
+    image_url: null,
+    client: 'RZ Concept',
+    statut: 'Site web',
+    description: 'Projet de site web pour RZ Concept.',
+  },
+  {
+    id: 'ecokepheyra',
+    titre: 'Ecokepheyra',
+    categorie: 'SITES WEB',
+    variant: 'housal-3',
+    image_url: null,
+    client: 'Ecokepheyra',
+    statut: 'Site web',
+    description: 'Projet de site web pour Ecokepheyra.',
+  },
+  {
+    id: 'dar-lmon',
+    titre: 'Dar Lmon',
+    categorie: 'BRANDING',
+    variant: 'housal-4',
+    image_url: null,
+    client: 'Dar Lmon',
+    statut: 'Branding',
+    description: 'Projet de branding pour Dar Lmon.',
+  },
+  {
     id: 'p1',
     titre: 'Elara — Skincare',
     categorie: 'BRANDING',
@@ -148,9 +178,11 @@ export default function Portfolio() {
                       <div className="ph-placeholder" style={{
                         borderRadius: 0, position: 'absolute', inset: 0,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        background: '#f0f0f0', color: '#999'
+                        background: '#efe9df', color: '#262626',
+                        flexDirection: 'column', gap: 12, padding: 24, textAlign: 'center'
                       }}>
-                        <span>Pas d&apos;image</span>
+                        <strong style={{ fontSize: 'clamp(24px, 4vw, 42px)' }}>{p.titre}</strong>
+                        <span style={{ fontSize: 12 }}>Visuel à venir</span>
                       </div>
                     )}
                     <span className={`gi-badge gi-badge-${p.variant}`}>
@@ -161,8 +193,10 @@ export default function Portfolio() {
                     <h3 className="gi-title">{p.titre}</h3>
                     <div className="gi-meta">
                       <span>{p.client || 'Client'}</span>
-                      <span className="dot"></span>
-                      <span>{p.date_projet || '2026'}</span>
+                      {p.date_projet && <>
+                        <span className="dot"></span>
+                        <span>{p.date_projet}</span>
+                      </>}
                     </div>
                     <div className="gi-footer">
                       <span className="gi-tag">{p.statut || 'Terminé'}</span>
