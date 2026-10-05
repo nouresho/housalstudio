@@ -12,6 +12,7 @@ const PROJETS_DEFAUT = [
     variant: 'housal-2',
     image_url: null,
     client: 'RZ Concept',
+    lien: 'https://rz-concept-website.vercel.app/',
     statut: 'Site web',
     description: 'Projet de site web pour RZ Concept.',
   },
@@ -27,13 +28,14 @@ const PROJETS_DEFAUT = [
   },
   {
     id: 'dar-lmon',
-    titre: 'Dar Lmon',
+    titre: 'Dar Limon',
     categorie: 'BRANDING',
     variant: 'housal-4',
     image_url: null,
-    client: 'Dar Lmon',
+    client: 'Dar Limon',
+    lien: 'https://www.instagram.com/p/DdE2UhUxSDW/',
     statut: 'Branding',
-    description: 'Projet de branding pour Dar Lmon.',
+    description: 'Projet de branding pour Dar Limon.',
   },
   {
     id: 'p1',
@@ -200,6 +202,12 @@ export default function Portfolio() {
                     </div>
                     <div className="gi-footer">
                       <span className="gi-tag">{p.statut || 'Terminé'}</span>
+                      {p.lien && (
+                        <a className="gi-project-link" href={p.lien} target="_blank" rel="noopener noreferrer"
+                          aria-label={`Voir le projet ${p.titre} (nouvel onglet)`}>
+                          Voir le projet ↗
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

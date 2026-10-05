@@ -775,6 +775,26 @@ section{ padding:96px 0; }
 .page-hero .eyebrow{ margin-top:20px; }
 .page-hero h1{ font-size:clamp(38px,6vw,64px); margin:0 0 20px; max-width:680px; }
 .page-hero p{ font-size:17px; color:#4A4A4A; max-width:560px; line-height:1.6; }
+.gi-project-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #262626;
+  text-decoration: none;
+}
+.gi-project-link:hover {
+  background: #262626;
+  color: #fff;
+}
+.gi-project-link:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
 .portfolio-disclaimer{
   font-size:14px;
   color:#666;
