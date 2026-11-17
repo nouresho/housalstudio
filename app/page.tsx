@@ -2,28 +2,15 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ServicesSection from '@/components/ServicesSection';
+import AppsShowcase from '@/components/AppsShowcase';
+import ProjectCard from '@/components/ProjectCard';
+import { PROJETS, PROJETS_VEDETTE } from '@/lib/projets';
 
-const projets = [
-  {
-    id: 'p1',
-    titre: 'Elara — Skincare',
-    categorie: 'BRANDING',
-    image_url: '/images/elara.png',
-    client: 'Elara',
-    date_projet: '2026',
-    statut: 'Projet personnel · Branding complet',
-    note: '5.0',
-  },
-  {
-    id: 'p2',
-    titre: 'Flour Lab — Boulangerie',
-    categorie: 'WEB & IDENTITÉ',
-    image_url: '/images/floorlab.png',
-    client: 'Flour Lab',
-    date_projet: '2026',
-    statut: 'Projet personnel · Web & Identité',
-    note: '5.0',
-  },
+const CHIFFRES = [
+  { valeur: `${PROJETS.length}+`, label: 'projets réalisés' },
+  { valeur: '2', label: 'applications mobiles' },
+  { valeur: '3', label: 'sites en ligne' },
+  { valeur: '4', label: 'expertises' },
 ];
 
 export default function HomePage() {
@@ -90,9 +77,30 @@ export default function HomePage() {
 
 
         {/* =========================
+            CHIFFRES
+        ========================== */}
+        <section className="stats-strip" aria-label="Housal en chiffres">
+          <div className="wrap stats-strip-inner">
+            {CHIFFRES.map((c) => (
+              <div className="stat" key={c.label}>
+                <strong>{c.valeur}</strong>
+                <span>{c.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+
+        {/* =========================
             SERVICES
         ========================== */}
         <ServicesSection />
+
+
+        {/* =========================
+            APPLICATIONS MOBILES
+        ========================== */}
+        <AppsShowcase />
 
 
         {/* =========================
@@ -103,7 +111,7 @@ export default function HomePage() {
           <div className="wrap">
 
             <div className="eyebrow">
-              Galerie
+              Projets récents
             </div>
 
             <h2
@@ -113,7 +121,7 @@ export default function HomePage() {
                 margin: '0 0 12px',
               }}
             >
-              Nos projets en image.
+              Nos derniers projets.
             </h2>
 
             <p
@@ -124,7 +132,7 @@ export default function HomePage() {
                 margin: '0 0 40px',
               }}
             >
-              Une sélection de nos réalisations.
+              Applications, sites et identités livrés pour nos clients.
             </p>
 
 
@@ -132,68 +140,9 @@ export default function HomePage() {
                 PROJETS
             ========================== */}
             <div className="gallery-grid">
-
-              {projets.map((p) => (
-
-                <article
-                  className="gallery-item visible"
-                  key={p.id}
-                >
-
-                  <div className="gi-photo">
-
-                    <img
-                      src={p.image_url}
-                      alt={p.titre}
-                    />
-
-                    <span className="gi-badge">
-                      {p.categorie}
-                    </span>
-
-                  </div>
-
-
-                  <div className="gi-body">
-
-                    <h3 className="gi-title">
-                      {p.titre}
-                    </h3>
-
-
-                    <div className="gi-meta">
-
-                      <span>
-                        {p.client}
-                      </span>
-
-                      <span className="dot"></span>
-
-                      <span>
-                        {p.date_projet}
-                      </span>
-
-                    </div>
-
-
-                    <div className="gi-footer">
-
-                      <span className="gi-tag">
-                        {p.statut}
-                      </span>
-
-                      <span className="gi-rating">
-                        ★ {p.note}
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </article>
-
+              {PROJETS_VEDETTE.map((p) => (
+                <ProjectCard p={p} key={p.id} visible />
               ))}
-
             </div>
 
 

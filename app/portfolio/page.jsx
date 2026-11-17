@@ -2,140 +2,13 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ProjectCard from '@/components/ProjectCard';
+import { PROJETS } from '@/lib/projets';
 import { useEffect, useState } from 'react';
-
-const PROJETS_DEFAUT = [
-  {
-    id: 'rz-concept',
-    titre: 'RZ Concept',
-    categorie: 'SITES WEB',
-    variant: 'housal-2',
-    image_url: '/images/rz-concept.webp',
-    client: 'RZ Concept',
-    lien: 'https://rz-concept-website.vercel.app/',
-    statut: 'Site web',
-    description: 'Projet de site web pour RZ Concept.',
-  },
-  {
-    id: 'ecokhephra',
-    titre: 'Ecokhephra',
-    categorie: 'SITES WEB',
-    variant: 'housal-3',
-    image_url: '/images/eco-kephyra.webp',
-    image_fit: 'contain',
-    client: 'Ecokhephra',
-    lien: 'https://www.tamraghtscooter.com/',
-    statut: 'Site web',
-    description: 'Projet de site web pour Ecokhephra — Tamraght Scooter.',
-  },
-  {
-    id: 'housal-studio',
-    titre: 'Housal Studio',
-    categorie: 'SITES WEB',
-    variant: 'housal-1',
-    image_url: '/images/housal-studio.webp',
-    image_fit: 'contain',
-    image_background: '#1904cb',
-    client: 'Housal Studio',
-    lien: 'https://housalstudio.vercel.app/',
-    statut: 'Site web',
-    description: 'Site web de Housal Studio.',
-  },
-  {
-    id: 'dar-lmon',
-    titre: 'Dar Limon',
-    categorie: 'BRANDING',
-    variant: 'housal-4',
-    image_url: '/images/dar-limon.webp',
-    image_fit: 'contain',
-    image_background: '#efe9df',
-    client: 'Dar Limon',
-    lien: 'https://www.instagram.com/p/DdE2UhUxSDW/',
-    statut: 'Branding',
-    description: 'Projet de branding pour Dar Limon.',
-  },
-  {
-    id: 'p1',
-    titre: 'Elara — Skincare',
-    categorie: 'BRANDING',
-    variant: 'housal-1',
-    image_url: '/images/elara.png',
-    client: 'Elara',
-    date_projet: '2026',
-    statut: 'Projet personnel · Branding complet',
-    description: "Identité visuelle complète et packaging pour une marque de soins premium.",
-  },
-  {
-    id: 'p2',
-    titre: 'Flour Lab — Boulangerie',
-    categorie: 'WEB & IDENTITÉ',
-    variant: 'housal-2',
-    image_url: '/images/floorlab.png',
-    client: 'Flour Lab',
-    date_projet: '2026',
-    statut: 'Projet personnel · Web & Identité',
-    description: "Refonte de l'identité visuelle et création du site vitrine responsive.",
-  },
-  {
-    id: 'p3',
-    titre: 'QHIWA — Coffee Brand',
-    categorie: 'STRATÉGIE & CONTENU',
-    variant: 'housal-3',
-    image_url: '/images/QHIWA.png',
-    client: 'QHIWA',
-    date_projet: '2026',
-    statut: 'Projet personnel · Stratégie & Contenu',
-    description: "Stratégie de contenu et création de visuels pour accompagner le lancement de la marque.",
-  },
-  {
-    id: 'p4',
-    titre: 'Melto — Cookies',
-    categorie: 'BRANDING',
-    variant: 'housal-1',
-    image_url: '/images/melto.png',
-    client: 'Melto',
-    date_projet: '2026',
-    statut: 'Branding complet',
-    description: "Identité visuelle gourmande et packaging pour une marque de cookies artisanaux.",
-  },
-  {
-    id: 'p5',
-    titre: 'Idramel — Bijouterie',
-    categorie: 'JEWELRY BRANDING',
-    variant: 'housal-2',
-    image_url: '/images/id.png',
-    client: 'Idramel',
-    date_projet: '2026',
-    statut: 'Identité de marque premium',
-    description: "Identité visuelle raffinée pour une maison de bijoux, entre héritage et modernité.",
-  },
-  {
-    id: 'p6',
-    titre: 'North Africa Surf',
-    categorie: 'BRANDING & WEB',
-    variant: 'housal-3',
-    image_url: '/images/surf.png',
-    client: 'North Africa Surf',
-    date_projet: '2026',
-    statut: 'Identité & site vitrine',
-    description: "Identité visuelle et site web pour une communauté de surf ancrée dans la culture nord-africaine.",
-  },
-  {
-    id: 'p7',
-    titre: 'Lumo Gelato',
-    categorie: 'BRANDING',
-    variant: 'housal-4',
-    image_url: '/images/lumo.png',
-    client: 'Lumo Gelato',
-    date_projet: '2024',
-    statut: 'Identité complète',
-    description: "Identité de marque fraîche et lumineuse pour une gelateria artisanale.",
-  },
-]
 
 export default function Portfolio() {
   const [selectedFilter, setSelectedFilter] = useState('Tous')
-  const projetsList = PROJETS_DEFAUT
+  const projetsList = PROJETS
 
   const categories = ['Tous', ...Array.from(new Set(projetsList.map(p => p.categorie)))]
 
@@ -169,7 +42,7 @@ export default function Portfolio() {
           <div className="wrap">
             <div className="eyebrow">Notre travail</div>
             <h1 className="display">Portfolio</h1>
-            <p>Une sélection de projets qui démontrent notre approche créative et notre capacité à transformer des marques.</p>
+            <p>Applications mobiles, sites web et identités de marque : une sélection de projets qui montrent notre façon de transformer des marques.</p>
           </div>
         </div>
 
@@ -189,47 +62,7 @@ export default function Portfolio() {
 
             <div className="gallery-grid gallery-grid-lg">
               {filteredProjects.map((p) => (
-                <div className={`gallery-item gallery-item-${p.variant}`} key={p.id}>
-                  <div className="gi-photo" style={{ background: p.image_background }}>
-                    {p.image_url ? (
-                      <img src={p.image_url} alt={p.titre} loading="lazy"
-                        className={p.image_fit === 'contain' ? 'gi-image-contain' : undefined}
-                        style={{ objectFit: p.image_fit || 'cover' }} />
-                    ) : (
-                      <div className="ph-placeholder" style={{
-                        borderRadius: 0, position: 'absolute', inset: 0,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        background: '#efe9df', color: '#262626',
-                        flexDirection: 'column', gap: 12, padding: 24, textAlign: 'center'
-                      }}>
-                        <strong style={{ fontSize: 'clamp(24px, 4vw, 42px)' }}>{p.titre}</strong>
-                        <span style={{ fontSize: 12 }}>Visuel à venir</span>
-                      </div>
-                    )}
-                    <span className={`gi-badge gi-badge-${p.variant}`}>
-                      {p.categorie || 'Projet'}
-                    </span>
-                  </div>
-                  <div className="gi-body">
-                    <h3 className="gi-title">{p.titre}</h3>
-                    <div className="gi-meta">
-                      <span>{p.client || 'Client'}</span>
-                      {p.date_projet && <>
-                        <span className="dot"></span>
-                        <span>{p.date_projet}</span>
-                      </>}
-                    </div>
-                    <div className="gi-footer">
-                      <span className="gi-tag">{p.statut || 'Terminé'}</span>
-                      {p.lien && (
-                        <a className="gi-project-link" href={p.lien} target="_blank" rel="noopener noreferrer"
-                          aria-label={`Voir le projet ${p.titre} (nouvel onglet)`}>
-                          Voir le projet ↗
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                <ProjectCard p={p} key={p.id} />
               ))}
             </div>
 
@@ -239,7 +72,7 @@ export default function Portfolio() {
                 <strong>Votre marque ici ?</strong>
                 <p>Discutons de votre projet</p>
               </div>
-              <button className="btn" onClick={() => window.location.href='/contact'}>Démarrer un projet</button>
+              <button className="btn" onClick={() => { window.location.href = '/contact' }}>Démarrer un projet</button>
             </div>
           </div>
         </div>

@@ -18,9 +18,9 @@ const SERVICES = [
     variant: 'housal-2', // orange
   },
   {
-    label: 'Web & digital',
-    title: 'Création de site web',
-    features: ['Design responsive', 'SEO & performance', 'CMS personnalisé'],
+    label: 'Web & mobile',
+    title: 'Sites & applications',
+    features: ['Sites web responsive', 'Applications iOS & Android', 'SEO & performance'],
     image: '/images/creationweb.jpg',
     variant: 'housal-3', // cream
   },
@@ -56,13 +56,13 @@ export default function ServicesSection() {
           Une agence, quatre expertises.
         </h2>
         <p style={{ fontSize: 15, color: '#5A5A5A', maxWidth: 480, margin: '0 0 40px' }}>
-          Un aperçu de ce qu'on fait. Le détail complet est sur la page services.
+          Un aperçu de ce qu&apos;on fait. Le détail et les prix sont sur la page offres.
         </p>
 
         <div className={`services-list services-list-sm ${visible ? 'sv-in' : ''}`} ref={ref}>
           {SERVICES.map((s, i) => (
             <Link
-              href="/services"
+              href="/plans"
               className={`service-card service-card-${s.variant} ${visible ? 'visible' : ''}`}
               key={s.title}
               style={{ transitionDelay: `${i * 90}ms` }}
