@@ -2102,3 +2102,16 @@ body::after{
 .gi-project-link:hover{ background:var(--ink); color:var(--cream); }
 .gi-project-link span{ transition:transform 0.25s ease; display:inline-block; }
 .gi-project-link:hover span{ transform:translate(2px,-2px); }
+
+/* ---------- Page Offres : onglets, prix, à la carte ---------- */
+.offres-tabs{ justify-content:center; flex-wrap:wrap; overflow:visible; margin-bottom:12px; }
+.offres-note{ text-align:center; font-size:13px; font-weight:600; letter-spacing:0.04em; color:#7A7A7A; margin:0 0 48px; }
+.pack-price-small{ font-size:0.5em; font-weight:600; opacity:0.75; }
+.pack-before{ font-size:13px; color:#8A8A8A; text-decoration:line-through; margin:-0.6rem 0 1rem; }
+.pack.featured .pack-before{ color:rgba(255,255,255,0.7); }
+.alacarte-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0 32px; max-width:980px; margin:0 auto; background:#fff; border:1px solid var(--grey-line); border-radius:22px; padding:12px 32px; }
+.alacarte-item{ display:flex; justify-content:space-between; gap:12px; padding:14px 0; border-bottom:1px dashed var(--grey-line); font-size:14.5px; }
+.alacarte-item strong{ color:var(--navy); white-space:nowrap; }
+@media (max-width:860px){ .alacarte-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .alacarte-grid{ grid-template-columns:1fr; padding:8px 20px; } }
+@media (max-width:900px){ .offres-tabs{ justify-content:flex-start; flex-wrap:nowrap; overflow-x:auto; } }
