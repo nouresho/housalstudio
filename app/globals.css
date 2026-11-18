@@ -2115,3 +2115,87 @@ body::after{
 @media (max-width:860px){ .alacarte-grid{ grid-template-columns:1fr 1fr; } }
 @media (max-width:560px){ .alacarte-grid{ grid-template-columns:1fr; padding:8px 20px; } }
 @media (max-width:900px){ .offres-tabs{ justify-content:flex-start; flex-wrap:nowrap; overflow-x:auto; } }
+
+/* =========================================================
+   IRISÉ 3D — forme WebGL, cartes holographiques, textes
+========================================================= */
+.irid-orb{ position:absolute; pointer-events:none; display:block; }
+.hero-orb{
+  z-index:1; width:min(62vw, 720px); aspect-ratio:1; left:50%; top:50%;
+  transform:translate(-50%, -54%); opacity:0;
+  animation:orb-in 1.4s cubic-bezier(.2,.8,.2,1) 0.9s forwards;
+  filter:drop-shadow(0 40px 60px rgba(11,10,46,0.35));
+}
+@keyframes orb-in{ from{ opacity:0; transform:translate(-50%,-50%) scale(0.6); } to{ opacity:0.95; transform:translate(-50%,-54%) scale(1); } }
+.apps-orb{ z-index:0; width:min(46vw, 560px); aspect-ratio:1; right:-8%; top:-12%; opacity:0.55; }
+.apps-wrap{ position:relative; z-index:1; }
+.irid-orb-fallback{
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,0.9), transparent 22%),
+    conic-gradient(from 0deg, #ff7ad9, #9b8cff, #6fd3ff, #8ef6c8, #ffe27a, #ff9f6b, #ff7ad9);
+  filter:blur(0.5px) saturate(1.1);
+  animation:orb-spin 14s linear infinite;
+}
+@keyframes orb-spin{ to{ rotate:360deg; } }
+@media (max-width:700px){
+  .hero-orb{ width:92vw; }
+  .apps-orb{ width:80vw; right:-30%; top:-6%; opacity:0.4; }
+}
+
+/* textes irisés */
+.irid-text, .irid-text-deep{
+  background-size:300% 100%;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:irid-shift 7s linear infinite;
+}
+.irid-text{ background-image:linear-gradient(90deg, #ff7ad9, #b48cff, #6fd3ff, #8ef6c8, #ffe27a, #ff9f6b, #ff7ad9); }
+.irid-text-deep{ background-image:linear-gradient(90deg, #1600CF, #7b2ff7, #d12bb5, #FF5900, #7b2ff7, #1600CF); }
+@keyframes irid-shift{ to{ background-position:300% 0; } }
+
+/* cartes : inclinaison 3D + reflet holographique au survol */
+.gallery-item, .pack, .app-card, .service-card{ position:relative; }
+.holo-on{
+  transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px) !important;
+  transition:transform 0.12s ease-out, box-shadow 0.3s ease !important;
+  box-shadow:
+    0 34px 60px -30px rgba(22,0,207,0.5),
+    -10px -6px 34px -18px rgba(255,90,210,0.45),
+    10px 8px 34px -18px rgba(80,210,255,0.5) !important;
+  will-change:transform;
+}
+.holo-sheen{
+  position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:7; opacity:0;
+  transition:opacity 0.35s ease;
+  background:
+    radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.55), rgba(255,255,255,0) 38%),
+    linear-gradient(calc(115deg + var(--hue,0deg) * 0.1),
+      rgba(255,122,217,0) 18%, rgba(255,122,217,0.22) 32%, rgba(111,211,255,0.24) 46%,
+      rgba(142,246,200,0.2) 58%, rgba(255,226,122,0.22) 70%, rgba(255,159,107,0) 84%);
+  background-size:100% 100%, 220% 220%;
+  background-position:center, var(--mx,50%) var(--my,50%);
+  mix-blend-mode:soft-light;
+}
+.app-card .holo-sheen, .pack.featured .holo-sheen, .service-card .holo-sheen{ mix-blend-mode:screen; opacity:0; }
+.holo-on > .holo-sheen{ opacity:1; }
+.app-card.holo-on > .holo-sheen, .pack.featured.holo-on > .holo-sheen, .service-card.holo-on > .holo-sheen{ opacity:0.4; }
+
+/* bordure irisée animée sur les cartes mises en avant */
+.pack.featured::after, .app-card::after{
+  content:''; position:absolute; inset:-1px; border-radius:inherit; padding:1.5px; pointer-events:none; z-index:8;
+  background:conic-gradient(from var(--irid-a,0deg), #ff7ad9, #b48cff, #6fd3ff, #8ef6c8, #ffe27a, #ff9f6b, #ff7ad9);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  opacity:0.0; transition:opacity 0.4s ease;
+  animation:irid-border 5s linear infinite;
+}
+.pack.featured::after{ opacity:0.9; }
+.app-card:hover::after, .app-card.holo-on::after{ opacity:0.9; }
+@property --irid-a{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+@keyframes irid-border{ to{ --irid-a:360deg; } }
+
+@media (prefers-reduced-motion: reduce){
+  .hero-orb{ animation:none; opacity:0.95; transform:translate(-50%,-54%); }
+  .irid-text, .irid-text-deep, .pack.featured::after, .app-card::after, .irid-orb-fallback{ animation:none; }
+}

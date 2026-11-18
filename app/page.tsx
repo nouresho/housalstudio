@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ServicesSection from '@/components/ServicesSection';
 import AppsShowcase from '@/components/AppsShowcase';
+import IridescentOrb from '@/components/IridescentOrb';
 import ProjectCard from '@/components/ProjectCard';
 import { PROJETS, PROJETS_VEDETTE } from '@/lib/projets';
 
@@ -29,6 +30,8 @@ export default function HomePage() {
             <div className="hero-wow-top"></div>
             <div className="hero-wow-bottom"></div>
           </div>
+
+          <IridescentOrb className="hero-orb" />
 
           <h1 className="hero-wow-title" aria-label="HOUSAL">
             <span className="hw-l hw-1">H</span>
@@ -83,7 +86,7 @@ export default function HomePage() {
           <div className="wrap stats-strip-inner">
             {CHIFFRES.map((c) => (
               <div className="stat" key={c.label}>
-                <strong>{c.valeur}</strong>
+                <strong className="irid-text-deep">{c.valeur}</strong>
                 <span>{c.label}</span>
               </div>
             ))}

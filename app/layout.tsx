@@ -1,6 +1,7 @@
 import './globals.css';
 import type { ReactNode } from 'react';
 import IntroReveal from '@/components/IntroReveal';
+import HoloEffects from '@/components/HoloEffects';
 
 export const metadata = {
   title: 'Housal Agency — Create. Mark. Impact.',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="fr">
       <body>
         <IntroReveal />
+        <HoloEffects />
         {children}
       </body>
     </html>

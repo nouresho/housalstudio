@@ -1,4 +1,6 @@
 // Section « Nos applications » de l'accueil : ExportAuto et Ocean Palace avec leurs écrans.
+import IridescentOrb from './IridescentOrb';
+
 const APPS = [
   {
     id: 'exportauto',
@@ -31,12 +33,13 @@ const APPS = [
 export default function AppsShowcase() {
   return (
     <section className="apps-section" aria-labelledby="apps-title">
-      <div className="wrap">
+      <IridescentOrb className="apps-orb" speed={0.7} />
+      <div className="wrap apps-wrap">
         <div className="apps-head">
           <div>
             <div className="eyebrow eyebrow-light">Nouveau · Applications mobiles</div>
             <h2 id="apps-title" className="display apps-title">
-              Des marques<br />qui tiennent <span className="apps-title-accent">dans la poche.</span>
+              Des marques<br />qui tiennent <span className="apps-title-accent irid-text">dans la poche.</span>
             </h2>
           </div>
           <p className="apps-intro">
