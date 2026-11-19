@@ -4,8 +4,8 @@ import IntroReveal from '@/components/IntroReveal';
 import HoloEffects from '@/components/HoloEffects';
 
 export const metadata = {
-  title: 'Housal Agency — Create. Mark. Impact.',
-  description: 'Agence de branding & communication basée à Agadir, Maroc.',
+  title: 'Housal Studio — Create. Mark. Impact.',
+  description: 'Housal Studio — studio de branding, création de contenu et sites web à Agadir, Maroc.',
 };
 
 type RootLayoutProps = {

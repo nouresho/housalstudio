@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="logo">
-              <span>HOUSAL<small style={{ color: '#9A958A' }}>AGENCY</small></span>
+              <span>HOUSAL<small style={{ color: '#9A958A' }}>STUDIO</small></span>
             </div>
             <p>Create. Mark. Impact. Agence de branding et de communication basée à Agadir, Maroc.</p>
           </div>
@@ -28,7 +28,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Housal Agency. All rights reserved.</span>
+          <span>© 2026 Housal Studio. Tous droits réservés.</span>
           <div className="social-row">
             <a href="#" aria-label="Instagram">IG</a>
             <a href="#" aria-label="LinkedIn">in</a>

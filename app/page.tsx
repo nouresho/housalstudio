@@ -43,7 +43,7 @@ export default function HomePage() {
           </h1>
 
           <p className="hero-wow-caption">
-            Housal Agency conçoit des identités visuelles fortes et des
+            Housal Studio conçoit des identités visuelles fortes et des
             stratégies de communication qui marquent les esprits.
           </p>
 

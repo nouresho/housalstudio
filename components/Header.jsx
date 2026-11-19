@@ -44,7 +44,7 @@ export default function Header({ active = 'home', forceDark = false }) {
         <Link href="/" className="logo logo-wow" onClick={closeMenu}>
           <span>
             HOUSAL
-            <small>AGENCY</small>
+            <small>STUDIO</small>
           </span>
         </Link>
 
