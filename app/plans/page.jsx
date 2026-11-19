@@ -157,7 +157,11 @@ export default function PlansPage() {
                   role="tab"
                   aria-selected={actif === o.id}
                   className={`filter-btn ${actif === o.id ? 'active' : ''}`}
-                  onClick={() => setActif(o.id)}
+                  onClick={(e) => {
+                    setActif(o.id)
+                    // sur mobile, la barre d'onglets défile : on garde l'onglet choisi visible
+                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+                  }}
                 >
                   {o.label}
                 </button>
