@@ -2199,3 +2199,13 @@ body::after{
   .hero-orb{ animation:none; opacity:0.95; transform:translate(-50%,-54%); }
   .irid-text, .irid-text-deep, .pack.featured::after, .app-card::after, .irid-orb-fallback{ animation:none; }
 }
+
+/* ---------- Formulaire de contact : WhatsApp + e-mail ---------- */
+.contact-send-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+.contact-send-row .contact-submit{ flex:1 1 220px; justify-content:center; display:inline-flex; align-items:center; gap:10px; }
+.contact-submit-wa{ background:#1FA855 !important; border-color:#1FA855 !important; color:#fff !important; }
+.contact-submit-wa:hover{ background:#178C46 !important; border-color:#178C46 !important; }
+.contact-submit-mail[disabled]{ opacity:0.6; cursor:wait; }
+.contact-privacy{ font-size:12px; color:#8A8A8A; margin:12px 0 0; }
+.contact-info-minimal a{ color:inherit; text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(255,89,0,0.5); }
+.contact-big-mail{ font-size:clamp(15px,1.75vw,22px); word-break:normal; overflow-wrap:anywhere; }

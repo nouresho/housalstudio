@@ -193,7 +193,10 @@ export default function PlansPage() {
                       ))}
                     </ul>
 
-                    <Link href="/contact" className={plan.tag ? 'btn' : 'btn outline'}>
+                    <Link
+                      href={`/contact?sujet=${encodeURIComponent(`Devis — ${offre.label} : pack ${plan.nom} (${plan.apartir ? 'dès ' : ''}${plan.prix}${plan.mois ? ' / mois' : ''})`)}`}
+                      className={plan.tag ? 'btn' : 'btn outline'}
+                    >
                       Demander un devis
                     </Link>
 
